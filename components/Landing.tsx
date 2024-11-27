@@ -24,7 +24,7 @@ const Landing = () => {
       <div className="h-[100vh] w-[100vw] flex flex-col bg-black/60">
         <div className="h-[70%] flex flex-col justify-center items-center gap-6">
           <h2 className="uppercase text-5xl text-white font-light">
-            Hi, I'm Nischal Bista
+            Hi, I&apos;m Nischal Bista
           </h2>
           <p className="text-white text-md font-light">
             Web Developer and Gaming Enthusiast
