@@ -12,6 +12,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      backgroundImage: {
+        "home-background": "url('portfolio/public/images/home-background.jpg')",
+      },
     },
   },
   plugins: [],
