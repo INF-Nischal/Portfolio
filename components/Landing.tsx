@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import background from "../public/images/home-background.jpg";
 import { usePageContext } from "@/store/PageProvider";
+import { FaAngleDown } from "react-icons/fa";
 
 const Landing = () => {
   const { about } = usePageContext();
@@ -27,12 +27,12 @@ const Landing = () => {
             Hi, I&apos;m Nischal Bista
           </h2>
           <p className="text-white text-md font-light">
-            Web Developer and Gaming Enthusiast
+            Web Developer &amp; Gaming Enthusiast
           </p>
         </div>
         <div className="h-[30%] flex justify-center">
           <button className="text-white" onClick={() => scrollToSection(about)}>
-            Go to!
+            <FaAngleDown className="text-[32px] text-slate-500 hover:text-white" />
           </button>
         </div>
       </div>

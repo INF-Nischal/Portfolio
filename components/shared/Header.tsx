@@ -1,11 +1,13 @@
 "use client";
 
 import { usePageContext } from "@/store/PageProvider";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { FaBars } from "react-icons/fa6";
 
 const sections = ["about", "passion", "experience", "work", "contact"];
 
 const Header = () => {
+  const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
   const { about, passion, experience, work, contact } = usePageContext();
 
   const refs: { [key: string]: React.RefObject<HTMLElement> } = {
@@ -23,10 +25,27 @@ const Header = () => {
     }
   };
 
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="sticky top-0 w-full h-[64px] flex items-center justify-between px-8 bg-black/60">
+    <header
+      className={`sticky top-0 w-full flex items-center justify-between px-8 z-[9999] ${
+        scrollY === 0 ? "bg-black/60 h-[64px]" : "bg-black h-[48px]"
+      } transition-all ease-in-out duration-500`}
+    >
       <h1 className="uppercase text-white">Nischal Bista</h1>
-      <div className="flex items-center gap-6">
+      <div className="hidden md:flex items-center gap-6">
         {sections.map((section) => (
           <button
             key={section}
@@ -36,6 +55,31 @@ const Header = () => {
             {section}
           </button>
         ))}
+      </div>
+      <div className="block md:hidden">
+        <button
+          onClick={() => setIsNavOpen(!isNavOpen)}
+          className="text-white text-[20px]"
+        >
+          <FaBars />
+        </button>
+        {isNavOpen && (
+          <div
+            className={`fixed left-0 w-full flex flex-col bg-black ${
+              scrollY === 0 ? "top-[64px]" : "top-[48px]"
+            }`}
+          >
+            {sections.map((section) => (
+              <button
+                key={section}
+                onClick={() => scrollToSection(section)}
+                className="uppercase hover:text-gray-700 text-white h-[48px]"
+              >
+                {section}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </header>
   );
