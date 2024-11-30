@@ -10,13 +10,7 @@ interface SocialCardProps {
 const SocialCard = ({ socialLink, icon }: SocialCardProps) => {
   return (
     <Link href={socialLink}>
-      <Image
-        src={icon}
-        alt="social-link"
-        width={36}
-        height={36}
-        className="grayscale hover:filter-none object-cover"
-      />
+      <Image src={icon} alt="social-link" width={36} height={36} />
     </Link>
   );
 };
