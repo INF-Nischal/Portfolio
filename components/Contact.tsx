@@ -31,8 +31,8 @@ const Contact = () => {
       <div ref={contactRef} className="flex flex-col items-center gap-8 py-24">
         <motion.div
           initial={{ x: -200 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.8 }}
+          animate={isInView ? { x: 0 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <FaRegPaperPlane className="text-[72px]" />
         </motion.div>
