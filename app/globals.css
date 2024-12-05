@@ -11,13 +11,13 @@ body {
 }
 
 .heading-2 {
-  @apply uppercase text-[32px] md:text-[36px] lg:text-[40px] transition-all duration-200;
+  @apply uppercase text-[24px] md:text-[32px] lg:text-[40px] transition-all duration-200;
 }
 
 .heading-3 {
-  @apply text-[18px] md:text-[20px] lg:text-[24px] transition-all duration-200;
+  @apply text-[16px] md:text-[20px] lg:text-[24px] transition-all duration-200;
 }
 
 .paragraph {
-  @apply text-[14px] md:text-[15px] lg:text-[16px] transition-all duration-200;
+  @apply text-[12px] md:text-[14px] lg:text-[16px] transition-all duration-200;
 }
