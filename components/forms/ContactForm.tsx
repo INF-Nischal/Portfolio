@@ -13,8 +13,8 @@ const ContactForm = ({ handleModal }: { handleModal: () => void }) => {
   const handleSendMail = (e: React.FormEvent) => {
     e.preventDefault();
 
-    emailjs
-      .send(
+    try {
+      emailjs.send(
         "service_cp6sxkl",
         "template_w9yiwdr",
         {
@@ -23,19 +23,18 @@ const ContactForm = ({ handleModal }: { handleModal: () => void }) => {
           message: message,
         },
         "Wf0ZQQ3EuVpw8LVgk"
-      )
-      .then(
-        (result) => {
-          alert("Your message has been sent!");
-          setFullName("");
-          setEmail("");
-          setMessage("");
-        },
-        (error) => {
-          console.error("Error sending message:", error);
-          alert("Failed to send message. Please try again later.");
-        }
       );
+
+      alert("Your message has been sent!");
+      setFullName("");
+      setEmail("");
+      setMessage("");
+
+      handleModal();
+    } catch (error) {
+      console.error("Error sending message:", error);
+      alert("Failed to send message. Please try again later.");
+    }
   };
 
   return (
