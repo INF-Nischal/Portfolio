@@ -128,7 +128,7 @@ const Experience = () => {
         </div>
       </div>
       <div className="w-full py-24 flex flex-col items-center gap-6 bg-black/40 backdrop:blur-0">
-        <h2 className="uppercase text-4xl font-light text-white">
+        <h2 className="uppercase heading-2 font-light text-white">
           Check out my resume!
         </h2>
         <motion.button
