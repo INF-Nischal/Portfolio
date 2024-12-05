@@ -12,28 +12,26 @@ const About = () => {
 
   const isInView = useInView(aboutRef, {
     once: true,
-    // root: aboutRef,
-    // margin: "10px",
-    // amount: "all",
+    margin: "-200px",
   });
 
   return (
     <section
       id="about"
       ref={usePageContext().about}
-      className="bg-white py-24 flex justify-center"
+      className="section_layout bg-white py-24 flex justify-center"
     >
-      <div ref={aboutRef} className="w-full md:w-[90%] lg:w-[40%]">
+      <div ref={aboutRef} className="w-full">
         <motion.div
           initial={{
-            y: 100,
+            y: 50,
             opacity: 0,
           }}
           animate={isInView ? { y: 0, opacity: 1 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-full flex flex-col items-center gap-6"
         >
-          <h2 className="uppercase text-4xl font-light">A little about me</h2>
+          <h2 className="heading-2">A little about me</h2>
 
           <motion.div
             initial={{
@@ -41,7 +39,7 @@ const About = () => {
               opacity: 0,
             }}
             animate={isInView ? { scale: 1, opacity: 1 } : {}}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
           >
             <Image
               src={profile}
@@ -54,12 +52,12 @@ const About = () => {
 
           <motion.p
             initial={{
-              y: 50,
+              y: 40,
               opacity: 0,
             }}
             animate={isInView ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
-            className="text-center px-4 lg:p-0"
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
+            className="paragraph w-full md:w-[80%] lg:w-[70%] text-center lg:p-0"
           >
             Hi! I&apos;m Nischal Bista, a web developer with a strong focus on
             front-end development and creating functional, robust systems.
@@ -71,50 +69,50 @@ const About = () => {
           </motion.p>
           <motion.div
             initial={{
-              y: 50,
+              y: 20,
               opacity: 0,
             }}
             animate={isInView ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
-            className="w-full flex flex-col items-center gap-6 bg-gray-300 p-6"
+            transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
+            className="w-full md:w-[80%] lg:w-[70%] flex flex-col items-center gap-6 bg-gray-300 p-6"
           >
-            <h3>TL;DR? Self Proclamations:</h3>
+            <h3 className="heading-3">TL;DR? Self Proclamations:</h3>
             <div className="w-full flex justify-around">
               <motion.div
                 initial={{
-                  y: 50,
+                  y: 20,
                   opacity: 0,
                 }}
                 animate={isInView ? { y: 0, opacity: 1 } : {}}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.9 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 1.6 }}
                 className="flex flex-col items-center gap-2"
               >
-                <FaLaptop className="text-[64px]" />
-                <p>Designer</p>
+                <FaLaptop className="text-[48px] transition-all duration-200" />
+                <p className="paragraph">Designer</p>
               </motion.div>
               <motion.div
                 initial={{
-                  y: 50,
+                  y: 20,
                   opacity: 0,
                 }}
                 animate={isInView ? { y: 0, opacity: 1 } : {}}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 1.1 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 2 }}
                 className="flex flex-col items-center gap-2"
               >
-                <FaCode className="text-[64px]" />
-                <p>Web Developer</p>
+                <FaCode className="text-[48px] transition-all duration-200" />
+                <p className="paragraph">Web Developer</p>
               </motion.div>
               <motion.div
                 initial={{
-                  y: 50,
+                  y: 20,
                   opacity: 0,
                 }}
                 animate={isInView ? { y: 0, opacity: 1 } : {}}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 1.3 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 2.4 }}
                 className="flex flex-col items-center gap-2"
               >
-                <FaKeyboard className="text-[64px]" />
-                <p>---</p>
+                <FaKeyboard className="text-[48px] transition-all duration-200" />
+                <p className="paragraph">---</p>
               </motion.div>
             </div>
           </motion.div>

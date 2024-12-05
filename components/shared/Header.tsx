@@ -40,11 +40,11 @@ const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 w-full flex items-center justify-between px-8 z-[9999] ${
+      className={`sticky top-0 w-full flex items-center justify-between px-8 md:px-16 lg:px-32 z-[999] ${
         scrollY === 0 ? "bg-black/60 h-[64px]" : "bg-black h-[48px]"
       } transition-all ease-in-out duration-500`}
     >
-      <h1 className="uppercase text-white">Nischal Bista</h1>
+      <h1 className="uppercase text-white text-lg">Nischal Bista</h1>
       <div className="hidden md:flex items-center gap-6">
         {sections.map((section) => (
           <button
@@ -63,23 +63,24 @@ const Header = () => {
         >
           <FaBars />
         </button>
-        {isNavOpen && (
-          <div
-            className={`fixed left-0 w-full flex flex-col bg-black ${
-              scrollY === 0 ? "top-[64px]" : "top-[48px]"
-            }`}
-          >
-            {sections.map((section) => (
-              <button
-                key={section}
-                onClick={() => scrollToSection(section)}
-                className="uppercase hover:text-gray-700 text-white h-[48px]"
-              >
-                {section}
-              </button>
-            ))}
-          </div>
-        )}
+        <div>
+          {isNavOpen && (
+            <div className="absolute left-0 top-0 pt-[48px] w-full flex flex-col bg-black transition-all duration-200 -z-[9999]">
+              {sections.map((section) => (
+                <button
+                  key={section}
+                  onClick={() => {
+                    scrollToSection(section);
+                    setIsNavOpen(!isNavOpen);
+                  }}
+                  className="uppercase hover:text-gray-700 text-white h-[48px]"
+                >
+                  {section}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

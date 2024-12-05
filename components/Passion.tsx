@@ -35,32 +35,41 @@ const Passion = () => {
 
   const isInView = useInView(passionRef, {
     once: true,
+    margin: "-200px",
   });
 
   return (
-    <section id="passion" ref={usePageContext().passion} className="bg-white">
+    <section
+      id="passion"
+      ref={usePageContext().passion}
+      className="section_layout bg-white"
+    >
       <div ref={passionRef} className="py-24 flex flex-col items-center gap-16">
         <motion.h2
           initial={{
-            y: 50,
+            y: 30,
             opacity: 0,
           }}
           animate={isInView ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="uppercase text-4xl font-light"
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+          className="heading-2 font-light"
         >
           What I do
         </motion.h2>
-        <div className="grid grid-cols-1 md:girid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-x-16 px-32">
+        <div className="grid grid-cols-1 md:girid-cols-2 lg:grid-cols-3 gap-y-12 md:gap-x-16">
           {passions.map((item, index) => (
             <motion.div
               key={item.id}
               initial={{
-                y: 300,
+                y: 30,
                 opacity: 0,
               }}
               animate={isInView ? { y: 0, opacity: 1 } : {}}
-              transition={{ duration: 0.8 + index * 0.3, ease: "easeOut" }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+                delay: 0.8 + index * 0.3,
+              }}
             >
               <PassionCard
                 key={item.id}

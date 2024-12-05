@@ -11,6 +11,7 @@ const Contact = () => {
 
   const isInView = useInView(contactRef, {
     once: true,
+    margin: "-200px",
   });
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -20,41 +21,48 @@ const Contact = () => {
   };
 
   const buttonVariants = {
-    hidden: { y: 100, opacity: 0 },
+    hidden: { y: 10, opacity: 0 },
     visible: { y: 0, opacity: 1 },
     hover: { scale: 1.1 },
     tap: { scale: 0.9 },
   };
 
   return (
-    <section id="contact" ref={usePageContext().contact} className="bg-white ">
-      <div ref={contactRef} className="flex flex-col items-center gap-8 py-24">
+    <section
+      id="contact"
+      ref={usePageContext().contact}
+      className="bg-white section_layout"
+    >
+      <div
+        ref={contactRef}
+        className="w-full flex flex-col items-center gap-8 py-24"
+      >
         <motion.div
-          initial={{ x: -200 }}
-          animate={isInView ? { x: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ x: -200, opacity: 0 }}
+          animate={isInView ? { x: 0, opacity: 1 } : {}}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
         >
           <FaRegPaperPlane className="text-[72px]" />
         </motion.div>
         <motion.h2
           initial={{
-            y: 100,
+            y: 20,
             opacity: 0,
           }}
           animate={isInView ? { y: 0, opacity: 0.8 } : {}}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="uppercase text-3xl font-light"
+          transition={{ duration: 1, ease: "easeOut", delay: 1 }}
+          className="heading-2 font-light"
         >
           Get in Touch!
         </motion.h2>
         <motion.p
           initial={{
-            y: 100,
+            y: 20,
             opacity: 0,
           }}
           animate={isInView ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="w-[30%] text-center"
+          transition={{ duration: 1.2, ease: "easeOut", delay: 1.4 }}
+          className="text-center paragraph"
         >
           Whether you have an idea for a project or just want to chat, feel free
           to shoot me an email!
@@ -66,7 +74,7 @@ const Contact = () => {
           whileTap="tap"
           variants={buttonVariants}
           transition={{
-            duration: 1.5,
+            duration: 3,
             type: "spring",
             stiffness: 400,
             damping: 10,

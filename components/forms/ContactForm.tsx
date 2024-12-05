@@ -3,34 +3,52 @@
 import React, { useState } from "react";
 import { FaX } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import emailjs from "emailjs-com";
 
 const ContactForm = ({ handleModal }: { handleModal: () => void }) => {
   const [fullName, setFullName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [message, setMessage] = useState<string>("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSendMail = (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log({
-      name: fullName,
-      email: email,
-      message: message,
-    });
+    emailjs
+      .send(
+        "service_cp6sxkl",
+        "template_w9yiwdr",
+        {
+          from_name: fullName,
+          email: email,
+          message: message,
+        },
+        "Wf0ZQQ3EuVpw8LVgk"
+      )
+      .then(
+        (result) => {
+          alert("Your message has been sent!");
+          setFullName("");
+          setEmail("");
+          setMessage("");
+        },
+        (error) => {
+          console.error("Error sending message:", error);
+          alert("Failed to send message. Please try again later.");
+        }
+      );
   };
 
   return (
     <motion.div
       key={"contact-form"}
-      initial={{ y: -400, opacity: 0 }}
+      initial={{ y: -200, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{
         type: "spring",
         stiffness: 400,
         damping: 30,
-        duration: 1,
       }}
-      exit={{ y: -400, opacity: 0 }}
+      exit={{ y: -200, opacity: 0 }}
       className="fixed top-4 bg-white w-full md:w-[70%] lg:w-[50%] px-8 pt-8 pb-16 flex flex-col gap-8 z-[99999] rounded-lg"
     >
       <div className="flex justify-end">
@@ -39,7 +57,7 @@ const ContactForm = ({ handleModal }: { handleModal: () => void }) => {
         </button>
       </div>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleSendMail}
         className="bg-white flex flex-col gap-4 px-8 py-4 border rounded-xl"
       >
         <h2 className="uppercase text-3xl font-light text-center pb-4">
